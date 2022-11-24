@@ -3,76 +3,64 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Characters\Character.cpp">
-      <Filter>Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Places\Dungeon.cpp">
-      <Filter>Dungeon</Filter>
-    </ClCompile>
-    <ClCompile Include="Characters\Monster.cpp">
-      <Filter>Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="Characters\Player.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
     <ClCompile Include="TextRPG\TextRPG.cpp">
       <Filter>TextRPG</Filter>
     </ClCompile>
-    <ClCompile Include="Places\Forge.cpp">
-      <Filter>Forge</Filter>
+    <ClCompile Include="Places\Motel.cpp" />
+    <ClCompile Include="Characters\Monster.cpp">
+      <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Characters\Player.cpp">
+      <Filter>Characters</Filter>
     </ClCompile>
     <ClCompile Include="Places\Store.cpp">
-      <Filter>Store</Filter>
+      <Filter>Places</Filter>
     </ClCompile>
-    <ClCompile Include="Places\Motel.cpp" />
+    <ClCompile Include="Places\Forge.cpp">
+      <Filter>Places</Filter>
+    </ClCompile>
+    <ClCompile Include="Places\Dungeon.cpp">
+      <Filter>Places</Filter>
+    </ClCompile>
+    <ClCompile Include="Characters\Character.cpp">
+      <Filter>Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="DayList.h" />
-    <ClInclude Include="Characters\Character.h">
-      <Filter>Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Places\Dungeon.h">
-      <Filter>Dungeon</Filter>
-    </ClInclude>
-    <ClInclude Include="Characters\Monster.h">
-      <Filter>Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="Characters\Player.h">
-      <Filter>Player</Filter>
-    </ClInclude>
     <ClInclude Include="TextRPG\TextRPG.h">
       <Filter>TextRPG</Filter>
     </ClInclude>
-    <ClInclude Include="Places\Forge.h">
-      <Filter>Forge</Filter>
+    <ClInclude Include="Places\Motel.h" />
+    <ClInclude Include="Characters\Monster.h">
+      <Filter>Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Characters\Player.h">
+      <Filter>Characters</Filter>
     </ClInclude>
     <ClInclude Include="Places\Store.h">
-      <Filter>Store</Filter>
+      <Filter>Places</Filter>
     </ClInclude>
-    <ClInclude Include="Places\Motel.h" />
+    <ClInclude Include="Places\Forge.h">
+      <Filter>Places</Filter>
+    </ClInclude>
+    <ClInclude Include="Places\Dungeon.h">
+      <Filter>Places</Filter>
+    </ClInclude>
+    <ClInclude Include="Characters\Character.h">
+      <Filter>Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Character">
-      <UniqueIdentifier>{43fb7957-b774-47a0-a034-71720cc0e664}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Dungeon">
-      <UniqueIdentifier>{b754ce00-3984-4bcc-a19a-7af782af8ace}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Monster">
-      <UniqueIdentifier>{96f01590-7bae-4908-a9b3-ee3ebe7a713c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{828927d5-bfd5-4f34-bff3-33bb05bb6076}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TextRPG">
       <UniqueIdentifier>{0cdaf313-9ecc-41bd-8f3e-a06e3e6aea6c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Forge">
-      <UniqueIdentifier>{81202020-d7cc-4d01-b134-eb181e6d84c5}</UniqueIdentifier>
+    <Filter Include="Characters">
+      <UniqueIdentifier>{cc6f36b9-bed4-4c5f-a984-982df2088f62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Store">
-      <UniqueIdentifier>{b05b76d9-f826-40e6-b895-dc5baa5191ef}</UniqueIdentifier>
+    <Filter Include="Places">
+      <UniqueIdentifier>{90ead26f-71a4-4c6a-a667-95f261655b74}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

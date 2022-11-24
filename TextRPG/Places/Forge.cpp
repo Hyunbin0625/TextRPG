@@ -29,6 +29,7 @@ Forge::Forge(Player* player)
 				player->SetPlayerWeapon(player->GetPlayerWeapon() + 1);
 				cout << "강화 완료!!\n";
 				cout << "무기 " << player->GetPlayerWeapon() << " 강\n";
+				Sleep(600);
 			}
 			else
 			{
@@ -43,6 +44,7 @@ Forge::Forge(Player* player)
 				player->SetPlayerArmor(player->GetPlayerArmor() + 1);
 				cout << "강화 완료!!\n";
 				cout << "갑옷 " << player->GetPlayerArmor() << " 강\n";
+				Sleep(600);
 			}
 			else
 			{
@@ -58,6 +60,7 @@ Forge::Forge(Player* player)
 				player->SetAVOID(player->GetPlayerShoes() * 2);
 				cout << "강화 완료!!\n";
 				cout << "신발 " << player->GetPlayerShoes() << " 강\n";
+				Sleep(600);
 			}
 			else
 			{

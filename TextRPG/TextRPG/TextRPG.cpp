@@ -10,7 +10,7 @@ TextRPG::TextRPG()
 	desc.mana = 30;
 	desc.atk = 20;
 	desc.def = 5;
-	desc.gold = 50;
+	desc.gold = 500;
 	desc.dungeonFloor = 1;
 	desc.maxHp = desc.level * 150;
 	desc.maxMana = desc.level * 30;
@@ -138,7 +138,7 @@ void TextRPG::PlayerInfo(Player* player)
 	cout << "\n==================== 장비 정보 ====================\n";
 	cout << " Weapon\t: " << player->GetPlayerWeapon() << "강, 추가 공격력 : +" << player->GetPlayerWeapon() * 5 << "\n";
 	cout << " Armor\t: " << player->GetPlayerArmor() << "강, 추가 방어력 : +" << player->GetPlayerArmor() * 5 << "\n";
-	cout << " Shoes\t: " << player->GetPlayerShoes() << "강\n";
+	cout << " Shoes\t: " << player->GetPlayerShoes() << "강, 추가 회피력 : +" << player->GetPlayerShoes() * 2 << "%\n";
 	// 보유 아이템정보
 	cout << "\n=================== 아이템 정보 ===================\n";
 	cout << " HpPotion\t: " << player->GetPlayerHpPotion() << "개\n";

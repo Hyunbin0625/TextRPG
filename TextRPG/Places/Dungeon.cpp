@@ -7,13 +7,18 @@ Dungeon::Dungeon(Player* player)
 	while (dungeon)	// 던전
 	{
 		cout << "========================= 던전 " << player->GetDungeonFloor() << "층 ========================\n";
-		cout << "몬스터을 만났다.\n\n";
+		cout << "몬스터을 만났다.\n";
 		turn = 1;
 
 		Monster* monster = new Monster(10, 60 + (player->GetDungeonFloor() * 3), 10 + (player->GetDungeonFloor() * 2), (player->GetDungeonFloor() * 3), (player->GetDungeonFloor() * 1.5));	// id, hp, atk, def, avoid
 		//	cout << "monster1 : " << goblin1.GetHP() << ", " << goblin1.GetATK() << endl;	// 몬스터 정보
 
 		srand((unsigned int)time(NULL));
+
+		random_device random;
+		mt19937 engine(random());
+		uniform_int_distribution<int> uniform(0, 99);
+
 		FightAct fightact = FightAct::Attack;
 		Attack attack = Attack::Normal;
 		Potion potion = Potion::HpPotion;
@@ -22,7 +27,7 @@ Dungeon::Dungeon(Player* player)
 		while (Fight)	// 몬스터
 		{
 			int run;
-			cout << "=========================== " << turn << "턴 ===========================\n\n";
+			cout << "\n=========================== " << turn << "턴 ===========================\n\n";
 			cout << "플레이어 체력 : " << player->GetHP() << " / " << player->GetPlayerMaxHp() << "\n";		// 총 체력 임시
 			cout << "플레이어 마나 : " << player->GetPlayerMana() << " / " << player->GetPlayerMaxMana() << "\n\n";	// 총 마나 임시
 			cout << "무엇을 하시겠습니까?\n\n";
@@ -37,10 +42,26 @@ Dungeon::Dungeon(Player* player)
 				switch (attack)
 				{
 				case Attack::Normal:
-					player->PlayerAttack(monster);
+					if (uniform(engine) <= monster->GetAVOID())
+					{
+						cout << "\n===================== 플레이어의 공격 =====================\n\n";
+						cout << "몬스터가 회피했다!\n\n";
+					}
+					else
+					{
+						player->PlayerAttack(monster);
+					}
 					break;
 				case Attack::Skill:
-					player->SkillBeginnerSword(monster);
+					if (uniform(engine) <= monster->GetAVOID())
+					{
+						cout << "\n===================== 플레이어의 공격 =====================\n\n";
+						cout << "몬스터가 회피했다!\n\n";
+					}
+					else
+					{
+						player->SkillBeginnerSword(monster);
+					}
 					break;
 				default:
 					cout << "해당 숫자의 행동은 없습니다.\n";
@@ -101,14 +122,35 @@ Dungeon::Dungeon(Player* player)
 
 					cout << "플레이어 체력 : " << player->GetHP() << " / " << player->GetPlayerMaxHp() << "\n";
 					cout << "플레이어 마나 : " << player->GetPlayerMana() << " / " << player->GetPlayerLevel() * 30 << "\n\n";
-					player->PlayerAttack(monster);
+
+					if (uniform(engine) <= monster->GetAVOID())
+					{
+						cout << "\n===================== 플레이어의 공격 =====================\n\n";
+						cout << "몬스터가 회피했다!\n\n";
+					}
+					else
+					{
+						player->PlayerAttack(monster);
+					}
+
 					turn += 1;
+					
 					if (monster->GetHP() <= 0)
 					{
 						break;
 					}
 					Sleep(1000);
-					monster->MonsterAttack(player);
+
+					if (uniform(engine) <= player->GetAVOID())
+					{
+						cout << "====================== 몬스터의 공격 ======================\n\n";
+						cout << "플레이어가 회피했다!\n\n";
+					}
+					else
+					{
+						monster->MonsterAttack(player);
+					}
+
 					if (monster->GetHP() <= 0)
 					{
 						break;
@@ -164,11 +206,20 @@ Dungeon::Dungeon(Player* player)
 			{
 				if (fightact != FightAct::Escape)
 				{
-					monster->MonsterAttack(player);
+					if (uniform(engine) <= player->GetAVOID())
+					{
+						cout << "====================== 몬스터의 공격 ======================\n\n";
+						cout << "플레이어가 회피했다!\n\n";
+					}
+					else
+					{
+						monster->MonsterAttack(player);
+					}
 					Sleep(1500);
 				}
 			}
 		}
+		system("cls");
 	}
 
 	// 던전에서 플레이한 후 player의 정보 넘기기

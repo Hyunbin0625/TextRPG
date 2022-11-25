@@ -5,19 +5,33 @@
 TextRPG::TextRPG()
 {
 	PlayerDesc desc = { 0 };
-	desc.level = 1;
-	desc.hp = 150;
-	desc.mana = 30;
-	desc.atk = 20;
-	desc.def = 5;
-	desc.gold = 500;
-	desc.dungeonFloor = 1;
-	desc.maxHp = desc.level * 150;
-	desc.maxMana = desc.level * 30;
-	desc.maxExp = desc.level * 20;
-	desc.avoid = desc.shoes * 2;
+	cout << "저장된 게임정보를 불러오겠습니까?\n";
+	cout << "1. Yes\t2. No(새 게임)\n";
+	cout << "선택 : ";
+
+	int select = 0;
+	cin >> select;
+	if (select == 1)
+	{
+		PlayerSavedRetrieve(&desc);
+	}
+	else 
+	{
+		desc.level = 1;
+		desc.hp = 150;
+		desc.mana = 30;
+		desc.atk = 20;
+		desc.def = 5;
+		desc.gold = 500;
+		desc.dungeonFloor = 1;
+		desc.maxHp = desc.level * 150;
+		desc.maxMana = desc.level * 30;
+		desc.maxExp = desc.level * 20;
+		desc.avoid = desc.shoes * 2;
+	}
 
 	Player* player1 = new Player(desc);
+	system("cls");
 	Play(player1);
 }
 
@@ -93,16 +107,31 @@ void TextRPG::Play(Player* player)
 			break;
 		}
 		case Act::Save:
+		{
+			system("cls");
+			cout << "플레이한 게임 정보를 저장하시겠습니까?\n";
+			cout << "1. Yes\t2. No(나가기)\n";
+			cout << "선택 : ";
+			int select = 0;
+			cin >> select;
+			if (select == 1)
+			{
+				Save(player);
+				cout << "플레이한 정보가 저장되었습니다.";
+				Sleep(1000);
+			}
+			system("cls");
 			break;
+		}
 		case Act::End:
 		{
 			system("cls");
 			cout << "저장하지 않은 정보는 사라집니다.\n";
 			cout << "1. Yes 2. No\n";
 			cout << "선택 : ";
-			int choice = 0;
-			cin >> choice;
-			if (choice == 1)
+			int select = 0;
+			cin >> select;
+			if (select == 1)
 			{
 				playing = 0;
 				break;
@@ -113,10 +142,6 @@ void TextRPG::Play(Player* player)
 			break;
 		}
 	}
-	
-	
-	
-	
 }
 
 void TextRPG::PlayerInfo(Player* player)
@@ -163,4 +188,65 @@ void TextRPG::SkillInfo(Player* player)
 	cout << "\n나가기\n";
 	system("pause");
 	system("cls");
+}
+
+void TextRPG::Save(Player* player)
+{
+	FILE* saveFile = fopen("SaveFile.txt", "w");
+
+	fprintf(saveFile, "%d ", player->GetID());
+	fprintf(saveFile, "%d ", player->GetHP());
+	fprintf(saveFile, "%d ", player->GetATK());
+	fprintf(saveFile, "%d ", player->GetDEF());
+	fprintf(saveFile, "%d ", player->GetAVOID());
+	fprintf(saveFile, "%d ", player->GetPlayerMaxHp());
+	fprintf(saveFile, "%d ", player->GetPlayerMaxMana());
+	fprintf(saveFile, "%d ", player->GetPlayerMaxExp());
+	fprintf(saveFile, "%d ", player->GetPlayerLevel());
+	fprintf(saveFile, "%d ", player->GetPlayerExp());
+	fprintf(saveFile, "%d ", player->GetPlayerMana());
+	fprintf(saveFile, "%d ", player->GetPlayerGold());
+	fprintf(saveFile, "%d ", player->GetDungeonFloor());
+	fprintf(saveFile, "%d ", player->GetPlayerWeapon());
+	fprintf(saveFile, "%d ", player->GetPlayerArmor());
+	fprintf(saveFile, "%d ", player->GetPlayerShoes());
+	fprintf(saveFile, "%d ", player->GetPlayerHpPotion());
+	fprintf(saveFile, "%d ", player->GetPlayerManaPotion());
+	fprintf(saveFile, "%d\n", player->GetPlayerReviveStone());
+
+	fclose(saveFile);
+}
+
+void TextRPG::PlayerSavedRetrieve(PlayerDesc* desc)
+{
+	FILE* readFile = fopen("SaveFile.txt", "r");
+
+	if (readFile != nullptr)
+	{	
+		fscanf(readFile, "%d ", &desc->id);
+		fscanf(readFile, "%d ", &desc->hp);
+		fscanf(readFile, "%d ", &desc->atk);
+		fscanf(readFile, "%d ", &desc->def);
+		fscanf(readFile, "%d ", &desc->avoid);
+		fscanf(readFile, "%d ", &desc->maxHp);
+		fscanf(readFile, "%d ", &desc->maxMana);
+		fscanf(readFile, "%d ", &desc->maxExp);
+		fscanf(readFile, "%d ", &desc->level);
+		fscanf(readFile, "%d ", &desc->exp);
+		fscanf(readFile, "%d ", &desc->mana);
+		fscanf(readFile, "%d ", &desc->gold);
+		fscanf(readFile, "%d ", &desc->dungeonFloor);
+		fscanf(readFile, "%d ", &desc->weapon);
+		fscanf(readFile, "%d ", &desc->armor);
+		fscanf(readFile, "%d ", &desc->shoes);
+		fscanf(readFile, "%d ", &desc->hpPotion);
+		fscanf(readFile, "%d ", &desc->manaPotion);
+		fscanf(readFile, "%d ", &desc->reviveStone);
+		fclose(readFile);
+	}
+	else
+	{
+		printf("Read Stream Open Error!");	// 에러 출력
+		Sleep(1200);
+	}
 }

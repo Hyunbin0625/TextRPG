@@ -11,6 +11,8 @@ public:
 	void Play(Player* player);
 	void PlayerInfo(Player* player);
 	void SkillInfo(Player* player);
+	void Save(Player* player);
+	void PlayerSavedRetrieve(PlayerDesc* desc);
 
 private:
 	Player* player = nullptr;

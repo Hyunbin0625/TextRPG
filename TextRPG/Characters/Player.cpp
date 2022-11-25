@@ -2,7 +2,7 @@
 #include "Player.h"
 
 Player::Player(PlayerDesc desc)
-	: Character(0, desc.hp, desc.atk, desc.def, desc.avoid)
+	: Character(desc.id, desc.hp, desc.atk, desc.def, desc.avoid)
 	, mana(desc.mana)
 	, level(desc.level)
 	, exp(desc.exp)

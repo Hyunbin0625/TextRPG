@@ -151,11 +151,30 @@ Dungeon::Dungeon(Player* player)
 						monster->MonsterAttack(player);
 					}
 
-					if (monster->GetHP() <= 0)
+					if (player->GetHP() < 1)
 					{
-						break;
+						system("cls");
+						cout << "플레이어 HP : 0\n";
+						cout << "부활석 : " << player->GetPlayerReviveStone() << "개\n";
+
+						cout << "1. 부활석 사용 2. 게임 종료\n";
+						cout << "선택 : ";
+						int select = 0;
+						cin >> select;
+
+						if (select == 1 && player->GetPlayerReviveStone() > 0)
+						{
+							cout << "부활석 1개를 사용하여\n";
+							player->SetPlayerReviveStone(player->GetPlayerReviveStone() - 1);
+							player->SetHP(player->GetPlayerLevel() * 150);
+							cout << "플레이어 부활 및 체력이 회복되었다.\n";
+						}
+						else
+						{
+							Fight = 0;
+							dungeon = 0;
+						}
 					}
-					Sleep(1000);
 				}
 				break;
 			default:
@@ -217,6 +236,37 @@ Dungeon::Dungeon(Player* player)
 					}
 					Sleep(1500);
 				}
+			}
+			if (player->GetHP() < 1)
+			{
+				system("cls");
+				cout << "플레이어 HP : 0\n";
+				cout << "부활석 : " << player->GetPlayerReviveStone() << "개\n";
+
+				cout << "1. 부활석 사용 2. 게임 종료\n";
+				cout << "선택 : ";
+				int select = 0;
+				cin >> select;
+
+				if (select == 1 && player->GetPlayerReviveStone() > 0)
+				{
+					cout << "부활석 1개를 사용하여\n";
+					player->SetPlayerReviveStone(player->GetPlayerReviveStone() - 1);
+					player->SetHP(player->GetPlayerLevel() * 150);
+					cout << "플레이어 부활 및 체력이 회복되었다.\n";
+				}
+				else if (select == 2)
+				{
+					cout << "게임을 종료합니다.\n";
+					return;
+				}
+				else
+				{
+					cout << "부활석이 부족합니다!!\n";
+					cout << "게임을 종료합니다.\n";
+					return;
+				}
+				
 			}
 		}
 		system("cls");

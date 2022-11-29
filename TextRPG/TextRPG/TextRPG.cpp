@@ -18,7 +18,7 @@ TextRPG::TextRPG()
 	else 
 	{
 		desc.level = 1;
-		desc.hp = 150;
+		desc.hp = 10;
 		desc.mana = 30;
 		desc.atk = 20;
 		desc.def = 5;
@@ -50,6 +50,13 @@ void TextRPG::Play(Player* player)
 
 	while (playing)
 	{
+		if (player->GetHP() < 1)
+		{
+			playing = 0;
+			break;
+		}
+
+
 		Act act;
 		cout << "=======================\n";
 		cout << "1. 던전\n";			// 몬스터 사냥, 경험치, 돈

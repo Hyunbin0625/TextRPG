@@ -193,7 +193,7 @@ void TextRPG::SkillInfo(Player* player)
 void TextRPG::Save(Player* player)
 {
 	FILE* saveFile = fopen("SaveFile.txt", "w");
-
+	// https://moozi.tistory.com/356
 //	fprintf(saveFile, "%l ", player);
 
 

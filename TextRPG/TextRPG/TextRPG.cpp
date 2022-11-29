@@ -18,7 +18,7 @@ TextRPG::TextRPG()
 	else 
 	{
 		desc.level = 1;
-		desc.hp = 10;
+		desc.hp = 150;
 		desc.mana = 30;
 		desc.atk = 20;
 		desc.def = 5;

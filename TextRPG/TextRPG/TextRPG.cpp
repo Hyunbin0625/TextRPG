@@ -194,25 +194,28 @@ void TextRPG::Save(Player* player)
 {
 	FILE* saveFile = fopen("SaveFile.txt", "w");
 
-	fprintf(saveFile, "%d ", player->GetID());
-	fprintf(saveFile, "%d ", player->GetHP());
-	fprintf(saveFile, "%d ", player->GetATK());
-	fprintf(saveFile, "%d ", player->GetDEF());
-	fprintf(saveFile, "%d ", player->GetAVOID());
-	fprintf(saveFile, "%d ", player->GetPlayerMaxHp());
-	fprintf(saveFile, "%d ", player->GetPlayerMaxMana());
-	fprintf(saveFile, "%d ", player->GetPlayerMaxExp());
-	fprintf(saveFile, "%d ", player->GetPlayerLevel());
-	fprintf(saveFile, "%d ", player->GetPlayerExp());
-	fprintf(saveFile, "%d ", player->GetPlayerMana());
-	fprintf(saveFile, "%d ", player->GetPlayerGold());
-	fprintf(saveFile, "%d ", player->GetDungeonFloor());
-	fprintf(saveFile, "%d ", player->GetPlayerWeapon());
-	fprintf(saveFile, "%d ", player->GetPlayerArmor());
-	fprintf(saveFile, "%d ", player->GetPlayerShoes());
-	fprintf(saveFile, "%d ", player->GetPlayerHpPotion());
-	fprintf(saveFile, "%d ", player->GetPlayerManaPotion());
-	fprintf(saveFile, "%d\n", player->GetPlayerReviveStone());
+//	fprintf(saveFile, "%l ", player);
+
+
+//	fprintf(saveFile, "%d ", player->GetID());
+//	fprintf(saveFile, "%d ", player->GetHP());
+//	fprintf(saveFile, "%d ", player->GetATK());
+//	fprintf(saveFile, "%d ", player->GetDEF());
+//	fprintf(saveFile, "%d ", player->GetAVOID());
+//	fprintf(saveFile, "%d ", player->GetPlayerMaxHp());
+//	fprintf(saveFile, "%d ", player->GetPlayerMaxMana());
+//	fprintf(saveFile, "%d ", player->GetPlayerMaxExp());
+//	fprintf(saveFile, "%d ", player->GetPlayerLevel());
+//	fprintf(saveFile, "%d ", player->GetPlayerExp());
+//	fprintf(saveFile, "%d ", player->GetPlayerMana());
+//	fprintf(saveFile, "%d ", player->GetPlayerGold());
+//	fprintf(saveFile, "%d ", player->GetDungeonFloor());
+//	fprintf(saveFile, "%d ", player->GetPlayerWeapon());
+//	fprintf(saveFile, "%d ", player->GetPlayerArmor());
+//	fprintf(saveFile, "%d ", player->GetPlayerShoes());
+//	fprintf(saveFile, "%d ", player->GetPlayerHpPotion());
+//	fprintf(saveFile, "%d ", player->GetPlayerManaPotion());
+//	fprintf(saveFile, "%d\n", player->GetPlayerReviveStone());
 
 	fclose(saveFile);
 }
@@ -223,25 +226,28 @@ void TextRPG::PlayerSavedRetrieve(PlayerDesc* desc)
 
 	if (readFile != nullptr)
 	{	
-		fscanf(readFile, "%d ", &desc->id);
-		fscanf(readFile, "%d ", &desc->hp);
-		fscanf(readFile, "%d ", &desc->atk);
-		fscanf(readFile, "%d ", &desc->def);
-		fscanf(readFile, "%d ", &desc->avoid);
-		fscanf(readFile, "%d ", &desc->maxHp);
-		fscanf(readFile, "%d ", &desc->maxMana);
-		fscanf(readFile, "%d ", &desc->maxExp);
-		fscanf(readFile, "%d ", &desc->level);
-		fscanf(readFile, "%d ", &desc->exp);
-		fscanf(readFile, "%d ", &desc->mana);
-		fscanf(readFile, "%d ", &desc->gold);
-		fscanf(readFile, "%d ", &desc->dungeonFloor);
-		fscanf(readFile, "%d ", &desc->weapon);
-		fscanf(readFile, "%d ", &desc->armor);
-		fscanf(readFile, "%d ", &desc->shoes);
-		fscanf(readFile, "%d ", &desc->hpPotion);
-		fscanf(readFile, "%d ", &desc->manaPotion);
-		fscanf(readFile, "%d ", &desc->reviveStone);
+	//	fscanf(readFile, "%l ", &desc);
+
+	//	fscanf(readFile, "%d ", &desc->id);
+	//	fscanf(readFile, "%d ", &desc->hp);
+	//	fscanf(readFile, "%d ", &desc->atk);
+	//	fscanf(readFile, "%d ", &desc->def);
+	//	fscanf(readFile, "%d ", &desc->avoid);
+	//	fscanf(readFile, "%d ", &desc->maxHp);
+	//	fscanf(readFile, "%d ", &desc->maxMana);
+	//	fscanf(readFile, "%d ", &desc->maxExp);
+	//	fscanf(readFile, "%d ", &desc->level);
+	//	fscanf(readFile, "%d ", &desc->exp);
+	//	fscanf(readFile, "%d ", &desc->mana);
+	//	fscanf(readFile, "%d ", &desc->gold);
+	//	fscanf(readFile, "%d ", &desc->dungeonFloor);
+	//	fscanf(readFile, "%d ", &desc->weapon);
+	//	fscanf(readFile, "%d ", &desc->armor);
+	//	fscanf(readFile, "%d ", &desc->shoes);
+	//	fscanf(readFile, "%d ", &desc->hpPotion);
+	//	fscanf(readFile, "%d ", &desc->manaPotion);
+	//	fscanf(readFile, "%d ", &desc->reviveStone);
+
 		fclose(readFile);
 	}
 	else

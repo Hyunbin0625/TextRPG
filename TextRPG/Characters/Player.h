@@ -73,6 +73,7 @@ public:
 	void SkillBeginnerSword(Character* otherCharacter);
 
 public:
+	void PlayerDie();
 	
 
 private:
